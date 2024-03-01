@@ -536,10 +536,33 @@ h1,h2,h3,h4,h5,h6{
 	left: -3px;
   }
 
+      /* jobTitle Animated Text*/
+
   #jobTitle {
 	overflow: hidden; 
-	height: 150px; 
-}
+	height: 70px; 
+  }
+
+    /* Animation for the typing cursor */
+    @keyframes cursorBlink {
+        0%, 100% {
+            border-color: transparent;
+        }
+        50% {
+            border-color: white;
+        }
+    }
+
+    /* Apply the cursor animation */
+    #jobTitle:after {
+        content: '|';
+        display: inline-block;
+        margin-left: 1px; /* Adjust the distance between text and cursor */
+        animation: cursorBlink 0.7s infinite;
+		font-weight: lighter; /* Adjust the font weight */
+    }
+
+  /* jobTitle Animated Text END*/
   
 .animated_text{
 	display: inline-block;
