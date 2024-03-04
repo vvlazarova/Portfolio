@@ -1113,15 +1113,13 @@
 			<!--/Section Resume-->
 
 		
-
 <!--/Section Contact-->
 <section id="contact">
     <div class="container">
         <div class="section_contact">
             <div class="contact_footer">
                 <div class="contact_footer_form">
-						<form name="contact" method="POST" data-netlify="true" action="/success">
-
+                    <form name="contact" method="POST" action="https://formspree.io/f/mvoerega">
                         <input type="hidden" name="form-name" value="contact" />
                         <div class="success" data-success="Your message has been received, we will contact you soon."></div>
                         <div class="empty_notice"><span>Please Fill Required Fields</span></div>
@@ -1155,48 +1153,6 @@
 
 
 
-<!-- modify this form HTML and place wherever you want your form -->
-<form id="my-form" action="https://formspree.io/f/mvoerega" method="POST">
-	<label>Email:</label>
-	<input type="email" name="email" />
-	<label>Message:</label>
-	<input type="text" name="message" />
-	<button id="my-form-button">Submit</button>
-	<p id="my-form-status"></p>
-  </form>
-  <!-- Place this script at the end of the body tag -->
-  <script>
-	  var form = document.getElementById("my-form");
-	  
-	  async function handleSubmit(event) {
-		event.preventDefault();
-		var status = document.getElementById("my-form-status");
-		var data = new FormData(event.target);
-		fetch(event.target.action, {
-		  method: form.method,
-		  body: data,
-		  headers: {
-			  'Accept': 'application/json'
-		  }
-		}).then(response => {
-		  if (response.ok) {
-			status.innerHTML = "Thanks for your submission!";
-			form.reset()
-		  } else {
-			response.json().then(data => {
-			  if (Object.hasOwn(data, 'errors')) {
-				status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-			  } else {
-				status.innerHTML = "Oops! There was a problem submitting your form"
-			  }
-			})
-		  }
-		}).catch(error => {
-		  status.innerHTML = "Oops! There was a problem submitting your form"
-		});
-	  }
-	  form.addEventListener("submit", handleSubmit)
-  </script>
 
 
 
@@ -1206,28 +1162,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-<!--/ Contact Form Script-->
-	<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelector("form").addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            // Your form submission logic here
-
-            // Show custom success message
-            document.querySelector(".success").innerText = "Your custom success message";
-        });
-    });
-</script>
 	
 
 
