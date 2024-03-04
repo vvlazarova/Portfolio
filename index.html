@@ -1126,16 +1126,26 @@
 										<li class="half"><input type="text" name="name" placeholder="Name *" required /></li>
 										<li class="half"><input type="email" name="email" placeholder="Email *" required /></li>
 										<li><input type="tel" name="phone" placeholder="Phone" /></li>
-										<li><textarea name="message" placeholder="Message"></textarea></li>
+										<li><textarea name="message" placeholder="Message *" required></textarea></li>
 										<li><input type="submit" value="Send Message" /></li>
 									</ul>
 								</form>
+							   </div>
+							<div class="contact_footer_address">
+								<div class="address_header">
+									<p>Address</p>
+									<h4>Scotland, United Kingdom</h4>
+								</div>
+								<div class="address_footer">
+									<p>Email</p>
+									<a href="mailto:violetaux@outlook.com">violetaux@outlook.com</a>
+								</div>
 							</div>
-							<!-- Other content remains unchanged -->
 						</div>
 					</div>
 				</div>
 			</section>
+			<!--/Section Contact-->
 			
 <!--/Section Contact-->
 
@@ -1202,7 +1212,7 @@
 
 <script>
     // JavaScript code for typing effect and changing job titles
-    const jobTitles = ['Researcher', 'Web Developer', 'UX Designer'];
+    const jobTitles = ['Researcher', 'Developer', 'UX Designer'];
     let currentTitleIndex = 0;
 
     function typeJobTitle(title, element, index) {
