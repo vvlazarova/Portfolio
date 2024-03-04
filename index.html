@@ -1113,43 +1113,67 @@
 			<!--/Section Resume-->
 
 		
-<!--/Section Contact-->
-<section id="contact">
-    <div class="container">
-        <div class="section_contact">
-            <div class="contact_footer">
-                <div class="contact_footer_form">
-                    <form name="contact" method="POST" action="https://formspree.io/f/mvoerega">
-                        <input type="hidden" name="form-name" value="contact" />
-                        <div class="success" data-success="Your message has been received, we will contact you soon."></div>
-                        <div class="empty_notice"><span>Please Fill Required Fields</span></div>
-                        <ul>
-                            <li class="half"><input class="name" type="text" name="name" placeholder="Name *" required /></li>
-                            <li class="half"><input class="email" type="email" name="email" placeholder="Email *" required /></li>
-                            <li><input class="tel" type="tel" name="phone" placeholder="Phone" /></li>
-                            <li><textarea class="message" name="message" placeholder="Message"></textarea></li>
-                            <li><input class="submit" type="submit" value="Send Message" /></li>
-                        </ul>
-                    </form>
-                </div>
-                <div class="contact_footer_address">
-                    <div class="address_header">
-                        <p>Address</p>
-                        <h4>Scotland, United Kingdom</h4>
-                    </div>
-                    <div class="address_footer">
-                        <p>Email</p>
-                        <a href="mailto:violetaux@outlook.com">violetaux@outlook.com</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+			<section id="contact">
+				<div class="container">
+					<div class="section_contact">
+						<div class="contact_footer">
+							<div class="contact_footer_form">
+								<!-- Updated form action to point to Formspree -->
+								<form id="contactForm" method="POST" action="https://formspree.io/f/mvoerega">
+									<div class="success" style="display:none;" id="successMessage">Your message has been received, we will contact you soon.</div>
+									<div class="empty_notice"><span>Please Fill Required Fields</span></div>
+									<ul>
+										<li class="half"><input type="text" name="name" placeholder="Name *" required /></li>
+										<li class="half"><input type="email" name="email" placeholder="Email *" required /></li>
+										<li><input type="tel" name="phone" placeholder="Phone" /></li>
+										<li><textarea name="message" placeholder="Message"></textarea></li>
+										<li><input type="submit" value="Send Message" /></li>
+									</ul>
+								</form>
+							</div>
+							<!-- Other content remains unchanged -->
+						</div>
+					</div>
+				</div>
+			</section>
+			
 <!--/Section Contact-->
 
 
 
+
+<script>
+	document.getElementById("contactForm").addEventListener("submit", function(event){
+		event.preventDefault();
+		var form = this;
+		var data = new FormData(form);
+	
+		fetch(form.action, {
+		  method: form.method,
+		  body: data,
+		  headers: {
+			'Accept': 'application/json'
+		  }
+		}).then(response => {
+		  if (response.ok) {
+			document.getElementById("successMessage").style.display = "block"; // Show success message
+			form.reset(); // Reset form fields
+			setTimeout(function(){ document.getElementById("successMessage").style.display = "none"; }, 5000); // Hide success message after 5 seconds
+		  } else {
+			response.json().then(data => {
+			  if (data.errors) {
+				// Handle the case where there are errors from Formspree
+				alert("There was a problem with your submission: " + data.errors.map(error => error.message).join(", "));
+			  } else {
+				alert("Oops! There was a problem submitting your form.");
+			  }
+			});
+		  }
+		}).catch(error => {
+		  alert("Oops! There was a problem submitting your form.");
+		});
+	});
+	</script>
 
 
 
