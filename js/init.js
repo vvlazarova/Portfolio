@@ -1,7 +1,6 @@
 /*
  * Copyright (c) 2021 Frenify
  * Author: Frenify
- * This file is made for CURRENT TEMPLATE
 */
 
 
@@ -151,27 +150,25 @@
 		},
 		
 		navigation__closer: function(){
-			var wrapper		= $('.persono_fn_wrapper');
-			var sidebar		= $('.persono_fn_sidebar');
-			var trigger		= sidebar.find('.nav_trigger');
+			var wrapper     = $('.persono_fn_wrapper');
+			var sidebar     = $('.persono_fn_sidebar');
+			var trigger     = sidebar.find('.nav_trigger');
 			$('.persono_fn_sidebar .nav__button').off().on('click',function(){
-				if(wrapper.hasClass('sidebar-closed')){
-					wrapper.removeClass('sidebar-closed');
-					trigger.text(trigger.data('close'));
-				}else{
-					wrapper.addClass('sidebar-closed');
-					trigger.text(trigger.data('open'));
-				}
+				wrapper.toggleClass('sidebar-closed');
+				trigger.text(wrapper.hasClass('sidebar-closed') ? trigger.data('text-open') : trigger.data('text-menu'));
+				
 				setTimeout(function(){
 					Persono.portfolio__category_filter();
 					Persono.service__masonry();
 					Persono.popup__resize();
 					Persono.slider__initalize();
-				},500);
-				
+				}, 500);
+		
 				return false;
 			});
 		},
+		
+		
 		
 		navigation__resize: function(){
 			var isResizing 	= false,
