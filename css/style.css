@@ -41,6 +41,11 @@ body{
 	color: #777;
 	word-break: break-word;
 }
+
+.hidden-section {
+    display: none;
+}
+
 p{
 	letter-spacing: 0;
 }
